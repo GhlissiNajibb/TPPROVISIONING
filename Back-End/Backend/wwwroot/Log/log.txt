@@ -1,0 +1,111 @@
+2023-07-10 09:36:34.600 +01:00 [INF] HTTP POST /api/Access/addNewAccess responded 200 in 652.9895 ms
+2023-07-10 09:36:34.887 +01:00 [INF] HTTP OPTIONS /api/Access/GetAllAccess responded 204 in 0.1291 ms
+2023-07-10 09:36:34.888 +01:00 [INF] HTTP OPTIONS /api/Module/GetAllModules responded 204 in 0.0640 ms
+2023-07-12 11:34:28.335 +01:00 [INF] HTTP POST /api/Access/addNewAccess responded 200 in 649.0197 ms
+2023-07-12 11:34:28.966 +01:00 [INF] HTTP OPTIONS /api/Access/GetAllAccess responded 204 in 0.0457 ms
+2023-07-12 11:34:28.967 +01:00 [INF] HTTP OPTIONS /api/Module/GetAllModules responded 204 in 0.0302 ms
+2023-07-12 11:34:28.993 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:28.993 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:29.035 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:29.035 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:29.073 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."AccessId", a."AccessName", a."CreatedBy", a."CreatedDate", a."LastModificatedDate", t."ModuleId", t."AccessId", t."CodMod", t."CodModPack", t."CreatedBy", t."CreatedDate", t."Description", t."LastModificatedDate", t."ModuleName", t."ModulePackage", t."ModuleStatus", t."ProductId", t."ProductId0", t."CodProd", t."CreatedBy0", t."CreatedDate0", t."Description0", t."FileName", t."ImageId", t."LastModificatedDate0", t."LogoFilePath", t."ProductName", t."ProductStatus", t."ProductVersion", t."PublishDate"
+FROM "Accesss" AS a
+LEFT JOIN (
+    SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId", p."ProductId" AS "ProductId0", p."CodProd", p."CreatedBy" AS "CreatedBy0", p."CreatedDate" AS "CreatedDate0", p."Description" AS "Description0", p."FileName", p."ImageId", p."LastModificatedDate" AS "LastModificatedDate0", p."LogoFilePath", p."ProductName", p."ProductStatus", p."ProductVersion", p."PublishDate"
+    FROM "Modules" AS m
+    LEFT JOIN "Products" AS p ON m."ProductId" = p."ProductId"
+) AS t ON a."AccessId" = t."AccessId"
+ORDER BY a."AccessId", t."ModuleId"
+2023-07-12 11:34:29.073 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId"
+FROM "Modules" AS m
+2023-07-12 11:34:29.085 +01:00 [INF] HTTP GET /api/Module/GetAllModules responded 200 in 117.2814 ms
+2023-07-12 11:34:29.088 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId"
+FROM "Modules" AS m
+WHERE m."ModuleId" = 1
+2023-07-12 11:34:29.092 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."AccessId", a."AccessName", a."LastModificatedDate", m."ModuleName", m."ModuleId", (
+    SELECT p."ProductName"
+    FROM "Modules" AS m0
+    LEFT JOIN "Products" AS p ON m0."ProductId" = p."ProductId"
+    WHERE a."AccessId" = m0."AccessId"
+    LIMIT 1)
+FROM "Accesss" AS a
+LEFT JOIN "Modules" AS m ON a."AccessId" = m."AccessId"
+ORDER BY a."AccessId"
+2023-07-12 11:34:29.093 +01:00 [INF] HTTP GET /api/Access/GetAllAccess responded 200 in 124.8269 ms
+2023-07-12 11:34:30.989 +01:00 [INF] HTTP OPTIONS /api/Module/GetProductNames responded 204 in 0.0498 ms
+2023-07-12 11:34:30.990 +01:00 [INF] HTTP OPTIONS /api/Products/GetAllProducts responded 204 in 0.0543 ms
+2023-07-12 11:34:31.000 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:31.000 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:31.000 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:31.000 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:31.015 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p."ProductId", p."CodProd", p."CreatedBy", p."CreatedDate", p."Description", p."FileName", p."ImageId", p."LastModificatedDate", p."LogoFilePath", p."ProductName", p."ProductStatus", p."ProductVersion", p."PublishDate"
+FROM "Products" AS p
+2023-07-12 11:34:31.015 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId", p."ProductId", p."CodProd", p."CreatedBy", p."CreatedDate", p."Description", p."FileName", p."ImageId", p."LastModificatedDate", p."LogoFilePath", p."ProductName", p."ProductStatus", p."ProductVersion", p."PublishDate"
+FROM "Modules" AS m
+LEFT JOIN "Products" AS p ON m."ProductId" = p."ProductId"
+2023-07-12 11:34:31.015 +01:00 [INF] HTTP GET /api/Products/GetAllProducts responded 200 in 22.5583 ms
+2023-07-12 11:34:31.015 +01:00 [INF] HTTP GET /api/Module/GetProductNames responded 200 in 22.6699 ms
+2023-07-12 11:34:41.176 +01:00 [INF] HTTP OPTIONS /api/Module/GetModulesByProductId/12 responded 204 in 0.0474 ms
+2023-07-12 11:34:41.180 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:41.180 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:41.223 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId"
+FROM "Modules" AS m
+LEFT JOIN "Products" AS p ON m."ProductId" = p."ProductId"
+WHERE p."ProductId" = @__id_0
+2023-07-12 11:34:41.224 +01:00 [INF] HTTP GET /api/Module/GetModulesByProductId/12 responded 200 in 45.4550 ms
+2023-07-12 11:34:44.197 +01:00 [INF] HTTP OPTIONS /api/Access/addNewAccess responded 204 in 0.0739 ms
+2023-07-12 11:34:44.202 +01:00 [INF] Failed to validate the token.
+System.MissingMethodException: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-07-12 11:34:44.203 +01:00 [INF] Bearer was not authenticated. Failure message: Method not found: 'Boolean Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(Microsoft.IdentityModel.Tokens.TokenValidationParameters, Microsoft.IdentityModel.Tokens.BaseConfiguration, Microsoft.IdentityModel.Tokens.BaseConfiguration ByRef)'.
+2023-07-12 11:34:44.206 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_AccessName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Accesss" AS a
+    WHERE a."AccessName" = @__input_AccessName_0)
+2023-07-12 11:34:44.212 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__input_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."ProductId", p."CodProd", p."CreatedBy", p."CreatedDate", p."Description", p."FileName", p."ImageId", p."LastModificatedDate", p."LogoFilePath", p."ProductName", p."ProductStatus", p."ProductVersion", p."PublishDate"
+FROM "Products" AS p
+WHERE p."ProductId" = @__input_ProductId_0
+LIMIT 1
+2023-07-12 11:34:44.219 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT m."ModuleId", m."AccessId", m."CodMod", m."CodModPack", m."CreatedBy", m."CreatedDate", m."Description", m."LastModificatedDate", m."ModuleName", m."ModulePackage", m."ModuleStatus", m."ProductId"
+FROM "Modules" AS m
+WHERE m."ModuleId" = @__Parse_0
+LIMIT 1
+2023-07-12 11:34:44.243 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accesss" ("AccessName", "CreatedBy", "CreatedDate", "LastModificatedDate")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "AccessId";
+2023-07-12 11:34:44.258 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@p5='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Modules" SET "AccessId" = @p4
+WHERE "ModuleId" = @p5;

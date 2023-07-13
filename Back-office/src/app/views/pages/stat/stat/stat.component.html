@@ -1,0 +1,107 @@
+
+<br><br>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<br><br><br>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h4>{{ usersCount }}  <p>Users</p></h4>
+                        <h4 style="color: green">{{ activeUsersCount }} <p>Active</p></h4>
+                        <h4>{{ inactiveUsersCount }} <p>Pending</p></h4>
+
+                       
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <h4><a routerLink="/admin/users" class="small-box-footer"
+                        >More info <i class="fas fa-arrow-circle-right"></i
+                    ></a></h4>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h4>{{ productsCount }} <p>Products</p></h4>
+                        <h4 style="color: green">{{ activeProductsCount }} <p>Active</p></h4>
+                        <h4>{{ inactiveProductsCount }} <p>Inactive</p></h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <h4><a routerLink="/admin/products" class="small-box-footer"
+                        >More info <i class="fas fa-arrow-circle-right"></i
+                    ></a></h4>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h4>{{ modulesCount }} <p>Modules</p></h4>
+                        <h4 style="color: green">{{ activeModulesCount }} <p>Active</p></h4>
+                        <h4>{{ inactiveModulesCount }} <p>Inactive</p></h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <h4><a routerLink="/admin/modules" class="small-box-footer"
+                        >More info <i class="fas fa-arrow-circle-right"></i
+                    ></a></h4>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h4>{{ licensesCount }} <p>Licenses</p></h4>
+                        <h4 style="color: green">{{ activeLicensesCount }} <p>Active</p></h4>
+                        <h4 >{{ inactiveLicensesCount }} <p>Inactive</p></h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <h4><a routerLink="/admin/licenses" class="small-box-footer"
+                        >More info <i class="fas fa-arrow-circle-right"></i
+                    ></a></h4>
+                    
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- Main row -->
+</section>
+
+
+<!-- /.content -->
+
+

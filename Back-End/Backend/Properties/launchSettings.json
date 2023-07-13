@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "Backend": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "PV_DB_HOST": "localhost",
+        "PV_DB_PORT": "5432",
+        "PV_DB_USER": "postgres",
+        "PV_DB_PASSWORD": "topadmin2023",
+        "PV_DB_NAME": "TP-PROVISIONING"
+      },
+      "applicationUrl": "http://localhost:7203"
+    }
+  },
+}
